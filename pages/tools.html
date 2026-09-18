@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Tools Suite — Tic-Tac-Toe Pro</title>
+  <meta name="description" content="5 interactive Tic-Tac-Toe tools: Board Analyzer, Move Simulator, Probability Calculator, 3D Coin Spinner, Multi-round Score Tracker, and Print Generator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/games.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link active">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">🔬 Precision Utilities</div>
+        <h1>Interactive Strategy Tools</h1>
+        <p>Analyze any board position, calculate exact win probabilities, pick who goes first with 3D coin physics, and manage match scores.</p>
+      </div>
+
+      <!-- TOOL 1: Board Analyzer & Move Simulator -->
+      <div class="tool-box" id="analyzer">
+        <div class="tool-header">
+          <div>
+            <div class="section-tag">🧠 Tool #1</div>
+            <h2>Move Simulator & Board Analyzer</h2>
+            <p>Click any cell to toggle between blank, X, and O. The Minimax engine will instantly evaluate advantage, detect double-threat forks, and highlight optimal moves.</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-secondary btn-sm" id="btn-analyzer-clear">🧹 Clear Board</button>
+            <button class="btn btn-primary btn-sm" id="btn-analyzer-hint">💡 Suggest Best Move</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center;">
+          <div style="display: flex; justify-content: center;">
+            <div class="board-wrapper">
+              <div class="game-board grid-3x3" id="analyzer-board">
+                <button class="board-cell" data-idx="0"></button>
+                <button class="board-cell" data-idx="1"></button>
+                <button class="board-cell" data-idx="2"></button>
+                <button class="board-cell" data-idx="3"></button>
+                <button class="board-cell" data-idx="4"></button>
+                <button class="board-cell" data-idx="5"></button>
+                <button class="board-cell" data-idx="6"></button>
+                <button class="board-cell" data-idx="7"></button>
+                <button class="board-cell" data-idx="8"></button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="glass-card" style="padding: 1.5rem;">
+              <h4 style="margin-bottom: 0.75rem;">Position Evaluation:</h4>
+              <div id="analyzer-status-badge" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-x); margin-bottom: 1rem;">Equal position (Draw with optimal play)</div>
+              
+              <div style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-secondary);">Next Player Turn: <strong id="analyzer-turn" style="color: #fff;">X</strong></div>
+              <div style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-secondary);">Forks Detected: <strong id="analyzer-forks" style="color: var(--color-gold);">None</strong></div>
+              <div style="font-size: 0.9rem; color: var(--text-secondary);">Minimax Best Move Cell: <strong id="analyzer-best-move" style="color: var(--color-success);">Cell #5 (Center)</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 2: Probability Calculator -->
+      <div class="tool-box" id="probability">
+        <div class="tool-header">
+          <div>
+            <div class="section-tag pink">📊 Tool #2</div>
+            <h2>Monte Carlo Probability Calculator</h2>
+            <p>Calculates exact victory, defeat, and draw probabilities for the current board position above using 1,200 simulated random rollouts.</p>
+          </div>
+        </div>
+
+        <div class="prob-meter-wrapper">
+          <div class="prob-meter">
+            <div class="prob-bar-x" id="calc-bar-x" style="width: 51%;"></div>
+            <div class="prob-bar-draw" id="calc-bar-draw" style="width: 18%;"></div>
+            <div class="prob-bar-o" id="calc-bar-o" style="width: 31%;"></div>
+          </div>
+          <div class="prob-legend">
+            <div class="prob-legend-item">
+              <span class="legend-dot" style="background: var(--color-x);"></span>
+              <span>Player X Win: <strong id="calc-pct-x" style="color: var(--color-x);">51%</strong></span>
+            </div>
+            <div class="prob-legend-item">
+              <span class="legend-dot" style="background: #64748b;"></span>
+              <span>Draw / Tie: <strong id="calc-pct-draw" style="color: #94a3b8;">18%</strong></span>
+            </div>
+            <div class="prob-legend-item">
+              <span class="legend-dot" style="background: var(--color-o);"></span>
+              <span>Player O Win: <strong id="calc-pct-o" style="color: var(--color-o);">31%</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 3: Random First-Player Spinner -->
+      <div class="tool-box" id="picker">
+        <div class="tool-header">
+          <div>
+            <div class="section-tag">🪙 Tool #3</div>
+            <h2>Random First-Player 3D Coin Spinner</h2>
+            <p>Settle who goes first with fair 3D physics-based coin flips with zero bias.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <div class="coin-container">
+            <div class="coin" id="coin-spinner">
+              <div class="coin-face coin-front">X</div>
+              <div class="coin-face coin-back">O</div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg" id="btn-flip-coin">🪙 Flip Coin For First Turn</button>
+          <div id="coin-result-text" style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-top: 1.25rem; min-height: 35px;"></div>
+        </div>
+      </div>
+
+      <!-- TOOL 4: Multi-Round Score Tracker -->
+      <div class="tool-box" id="tracker">
+        <div class="tool-header">
+          <div>
+            <div class="section-tag pink">📈 Tool #4</div>
+            <h2>Multi-Round Score Tracker</h2>
+            <p>Keep track of live match scores across sessions with automatic LocalStorage persistence.</p>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btn-clear-stats">🗑️ Reset Score Log</button>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 2rem;">
+          <div class="glass-card" style="text-align: center;">
+            <div style="font-size: 2.2rem; font-weight: 800; color: var(--color-x);" id="stat-x-wins">0</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Player X Wins</div>
+          </div>
+          <div class="glass-card" style="text-align: center;">
+            <div style="font-size: 2.2rem; font-weight: 800; color: #94a3b8;" id="stat-draws">0</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Ties / Draws</div>
+          </div>
+          <div class="glass-card" style="text-align: center;">
+            <div style="font-size: 2.2rem; font-weight: 800; color: var(--color-o);" id="stat-o-wins">0</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Player O Wins</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: center;">
+          <button class="btn btn-sm btn-primary" id="btn-add-x">+ Log X Win</button>
+          <button class="btn btn-sm btn-secondary" id="btn-add-draw">+ Log Draw</button>
+          <button class="btn btn-sm btn-pink" id="btn-add-o">+ Log O Win</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/game-engine.js"></script>
+  <script src="../js/tools.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Board Analyzer & Simulator Setup
+      const analyzer = new BoardAnalyzer();
+      const analyzerCells = document.querySelectorAll('#analyzer-board .board-cell');
+      const statusBadge = document.getElementById('analyzer-status-badge');
+      const turnLabel = document.getElementById('analyzer-turn');
+      const forksLabel = document.getElementById('analyzer-forks');
+      const bestMoveLabel = document.getElementById('analyzer-best-move');
+
+      function updateAnalyzerUI() {
+        analyzerCells.forEach((c, idx) => {
+          const val = analyzer.board[idx];
+          c.textContent = val || '';
+          c.className = 'board-cell';
+          if (val === 'X') c.classList.add('x-cell', 'filled');
+          if (val === 'O') c.classList.add('o-cell', 'filled');
+        });
+
+        const analysis = analyzer.analyze();
+        statusBadge.textContent = analysis.status;
+        turnLabel.textContent = analysis.nextTurn || 'Done';
+        forksLabel.textContent = analysis.forks.length > 0 ? `Cells ${analysis.forks.map(f => f+1).join(', ')}` : 'None';
+        bestMoveLabel.textContent = analysis.bestMove !== -1 ? `Cell #${analysis.bestMove + 1}` : 'N/A';
+
+        // Update Probabilities
+        const probs = window.calculateProbabilities(analyzer.board);
+        document.getElementById('calc-pct-x').textContent = `${probs.x}%`;
+        document.getElementById('calc-pct-draw').textContent = `${probs.draw}%`;
+        document.getElementById('calc-pct-o').textContent = `${probs.o}%`;
+        document.getElementById('calc-bar-x').style.width = `${probs.x}%`;
+        document.getElementById('calc-bar-draw').style.width = `${probs.draw}%`;
+        document.getElementById('calc-bar-o').style.width = `${probs.o}%`;
+      }
+
+      analyzerCells.forEach(cell => {
+        cell.addEventListener('click', () => {
+          const idx = parseInt(cell.getAttribute('data-idx'));
+          const current = analyzer.board[idx];
+          if (current === null) analyzer.setCell(idx, 'X');
+          else if (current === 'X') analyzer.setCell(idx, 'O');
+          else analyzer.setCell(idx, null);
+          if (window.soundManager) window.soundManager.playClick();
+          updateAnalyzerUI();
+        });
+      });
+
+      document.getElementById('btn-analyzer-clear').addEventListener('click', () => {
+        analyzer.reset();
+        updateAnalyzerUI();
+      });
+
+      document.getElementById('btn-analyzer-hint').addEventListener('click', () => {
+        const res = analyzer.analyze();
+        if (res.bestMove !== -1) {
+          const target = analyzerCells[res.bestMove];
+          target.classList.add('win-cell');
+          setTimeout(() => target.classList.remove('win-cell'), 1200);
+        }
+      });
+
+      updateAnalyzerUI();
+
+      // 2. Coin Spinner Setup
+      const btnFlip = document.getElementById('btn-flip-coin');
+      const coinResultText = document.getElementById('coin-result-text');
+      btnFlip.addEventListener('click', () => {
+        coinResultText.textContent = 'Flipping coin in 3D air...';
+        window.flipFirstPlayer((winnerText, mark) => {
+          coinResultText.innerHTML = `Result: <span style="color: ${mark === 'X' ? 'var(--color-x)' : 'var(--color-o)'};">${winnerText}</span> starts first!`;
+        });
+      });
+
+      // 3. Score Tracker Setup
+      function updateStatsUI() {
+        const stats = window.StorageManager.getStats();
+        document.getElementById('stat-x-wins').textContent = stats.classic.xWins || 0;
+        document.getElementById('stat-o-wins').textContent = stats.classic.oWins || 0;
+        document.getElementById('stat-draws').textContent = stats.classic.draws || 0;
+      }
+
+      document.getElementById('btn-add-x').addEventListener('click', () => {
+        window.StorageManager.recordMatch('classic', 'x');
+        updateStatsUI();
+      });
+      document.getElementById('btn-add-draw').addEventListener('click', () => {
+        window.StorageManager.recordMatch('classic', 'draw');
+        updateStatsUI();
+      });
+      document.getElementById('btn-add-o').addEventListener('click', () => {
+        window.StorageManager.recordMatch('classic', 'o');
+        updateStatsUI();
+      });
+      document.getElementById('btn-clear-stats').addEventListener('click', () => {
+        window.StorageManager.clearStats();
+        updateStatsUI();
+      });
+
+      updateStatsUI();
+    });
+  </script>
+</body>
+</html>

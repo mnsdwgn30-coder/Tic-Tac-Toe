@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Play & Rules Guide — Tic-Tac-Toe Pro</title>
+  <meta name="description" content="Complete guide to Tic-Tac-Toe rules: Beginner basics, official rules, simplified kids guidelines, variant rules (Misère, 4x4, 3D), and common clarifications.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link active">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">📜 Standard & Variant Rules</div>
+        <h1>How To Play Tic-Tac-Toe</h1>
+        <p>From fundamental beginner rules to tournament regulations, reverse Misère modes, and common misconceptions debunked.</p>
+      </div>
+
+      <!-- Quick Rules Summary Card -->
+      <div class="glass-card" style="margin-bottom: 3.5rem; border-left: 4px solid var(--color-x);">
+        <h3>🎯 The Golden Objective</h3>
+        <p>Tic-Tac-Toe is a two-player zero-sum game played on a 3×3 grid. One player marks <strong>X</strong> and the other marks <strong>O</strong>. The first player to align <strong>three of their marks</strong> horizontally, vertically, or diagonally wins the match. If all 9 squares are filled with no triple formed, the game ends in a <strong>Draw (Tie / Cat's Game)</strong>.</p>
+      </div>
+
+      <!-- Rules Categories Grid -->
+      <div class="grid-2">
+        
+        <!-- 1. Beginner Basics -->
+        <div class="glass-card">
+          <div class="section-tag">🐣 Beginners</div>
+          <h3>Basic Rules for Beginners</h3>
+          <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Grid Setup:</strong> Draw a 3×3 grid with 9 blank cells.</li>
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Turns:</strong> Players take turns placing exactly one symbol per turn in an empty cell.</li>
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>First Turn:</strong> Traditionally, player <strong>X</strong> moves first. In subsequent rounds, players alternate first move.</li>
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Permanent Moves:</strong> Once placed, a mark cannot be moved, replaced, or erased.</li>
+          </ul>
+        </div>
+
+        <!-- 2. Simplified for Kids -->
+        <div class="glass-card">
+          <div class="section-tag pink">🎈 Kids Edition</div>
+          <h3>Rules for Kids (Simplified)</h3>
+          <p>Teaching younger children? Use these intuitive guidelines:</p>
+          <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+            <li style="margin-bottom: 0.8rem;">🟢 <strong>"Three in a Line":</strong> Think of it like connecting train cars in a row!</li>
+            <li style="margin-bottom: 0.8rem;">🟢 <strong>"Block the Bridge":</strong> If you see two of your friend's symbols together, put yours in the empty spot to stop them from winning.</li>
+            <li style="margin-bottom: 0.8rem;">🟢 <strong>No Peeking / No Double Moves:</strong> Wait for your turn after your friend takes theirs.</li>
+          </ul>
+        </div>
+
+        <!-- 3. Official Tournament Rules -->
+        <div class="glass-card">
+          <div class="section-tag">🏆 Competition</div>
+          <h3>Official Standard Regulations</h3>
+          <p>In competitive and tournament formats:</p>
+          <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+            <li>⏱️ <strong>Time Control:</strong> Standard blitz turns allow 5 to 10 seconds per move.</li>
+            <li>⚖️ <strong>Series Scoring:</strong> Matches are played in sets of 10 or 20 games; 1 point for a win, 0.5 points for a draw.</li>
+            <li>🔁 <strong>Alternating Openings:</strong> Players must swap who plays 'X' after each individual game.</li>
+          </ul>
+        </div>
+
+        <!-- 4. Variant Rules (Misère, 4x4, 3D) -->
+        <div class="glass-card">
+          <div class="section-tag pink">🌀 Variants</div>
+          <h3>Variant Rules (Misère, 4x4, 3D)</h3>
+          <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+            <li style="margin-bottom: 0.8rem;">🔄 <strong>Misère (Reverse Mode):</strong> Getting 3-in-a-row causes you to <em>lose</em>! You must force your opponent to complete a line.</li>
+            <li style="margin-bottom: 0.8rem;">📐 <strong>4x4 Grid:</strong> 16 cells. Requires 4-in-a-row to win. Higher complexity and fewer draws.</li>
+            <li style="margin-bottom: 0.8rem;">🧊 <strong>3D Tic-Tac-Toe (Qubic):</strong> Played on a 4×4×4 cube (64 cells) with 76 winning lines.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Common Rule Mistakes / Clarifications Accordion -->
+      <div style="margin-top: 4rem;">
+        <div class="section-header">
+          <div class="section-tag">🔍 Clarifications</div>
+          <h2>Common Rule Mistakes & FAQs</h2>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can a player skip a turn or pass?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>No.</strong> In standard Tic-Tac-Toe rules, passing is strictly forbidden. A player must place their symbol on an available square whenever it is their turn.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>What happens if both players create 3-in-a-row at the same time?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>This is physically impossible in standard play because moves are made sequentially one at a time. The first player who places their third symbol to complete a line immediately wins the game, and play terminates on the spot.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Why is a Draw called "Cat's Game"?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>The term dates back to 19th-century English idioms referring to "cat's play" or a game where neither side can prevail, likening it to an agile cat that always lands on its feet or plays with its tail without a clear victor.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="strategy.html" class="btn btn-primary btn-lg">Ready to win every time? Read the Strategy Guide &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions (FAQ) — Tic-Tac-Toe Pro</title>
+  <meta name="description" content="Answers to every Tic-Tac-Toe question: Is it solved? Can you always win? Who goes first? 3-player rules, and age benefits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container" style="max-width: 860px;">
+      <div class="section-header">
+        <div class="section-tag">❓ Knowledge Base</div>
+        <h1>Frequently Asked Questions</h1>
+        <p>Comprehensive, expert answers covering rules, strategy, mathematical proofs, and gameplay curiosities.</p>
+      </div>
+
+      <!-- FAQ Accordions -->
+      <div class="accordion-list">
+
+        <div class="accordion-item open">
+          <div class="accordion-header">
+            <span>Is Tic-Tac-Toe a mathematically solved game?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Yes, strongly solved.</strong> Tic-Tac-Toe has been completely mapped out computationally. Every possible branch of the 255,168 total games is known. Under optimal rational play from both players, the outcome is a <strong>guaranteed draw (tie)</strong> every single time.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can Tic-Tac-Toe be won every time?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>No.</strong> You cannot force a win if your opponent makes zero mistakes. However, if you play first (as X) and start in a <strong>corner</strong>, you will win 100% of games where your opponent fails to immediately occupy the exact center square on Move 2.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Who goes first: X or O?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>By international convention, <strong>Player X always moves first</strong> in game 1. In subsequent games within a tournament or match, players alternate first turn regardless of who won or drew the previous game.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>What happens if no one wins (Draw / Cat's Game)?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>When all 9 squares are filled and neither player has achieved 3-in-a-row, the game is officially recorded as a <strong>Draw (Tie)</strong>. In competitive scoring, both players receive 0.5 points.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can you play Tic-Tac-Toe with 3 players?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>On a standard 3×3 grid, 3 players leads to extreme kingmaker scenarios and rapid stalemates. However, 3-player Tic-Tac-Toe is commonly played on a <strong>3D 3×3×3 cube</strong> or a <strong>6×6 hex grid</strong> with three distinct symbols (X, O, and Δ).</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Is there a trick or secret to always win?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>The #1 trick is the <strong>Corner-Opposite-Corner Fork</strong>: Play in corner #1, then place your second mark in an adjacent corner to create a double-threat trap that cannot be blocked simultaneously.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Is Tic-Tac-Toe good for young children?</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p><strong>Exceptionally good.</strong> Child psychologists and educators widely recommend Tic-Tac-Toe for ages 3+ to build spatial reasoning, foresight, sportsmanship, and foundational logic patterns.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="glossary.html" class="btn btn-secondary btn-lg">📖 Check the Terminology Glossary &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

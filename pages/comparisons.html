@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Comparisons — Tic-Tac-Toe vs Connect 4, Chess & AI Benchmarks</title>
+  <meta name="description" content="Compare Tic-Tac-Toe complexity against Connect Four and Chess. Detailed breakdown of state-space, game tree complexity, and AI difficulty levels.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">⚖️ Benchmark & Analysis</div>
+        <h1>Game Complexity Comparisons</h1>
+        <p>How does Tic-Tac-Toe measure up against other famous strategy games in terms of state-space size, decision branches, and computational solveability?</p>
+      </div>
+
+      <!-- Comparative Table Matrix -->
+      <div class="glass-card" style="overflow-x: auto; margin-bottom: 3.5rem;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-subtle); color: #fff;">
+              <th style="padding: 1rem;">Game</th>
+              <th style="padding: 1rem;">Board Size</th>
+              <th style="padding: 1rem;">State Space Complexity</th>
+              <th style="padding: 1rem;">Game Tree Complexity</th>
+              <th style="padding: 1rem;">Solved Status</th>
+              <th style="padding: 1rem;">Optimal Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-subtle); background: rgba(0, 242, 254, 0.05);">
+              <td style="padding: 1rem; font-weight: 700; color: var(--color-x);">Tic-Tac-Toe (Classic)</td>
+              <td style="padding: 1rem;">3 × 3 (9)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>3</sup> (5,478)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>5</sup> (255,168)</td>
+              <td style="padding: 1rem; color: var(--color-success);">✅ Solved (Strongly)</td>
+              <td style="padding: 1rem;">Forced Draw</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <td style="padding: 1rem; font-weight: 700; color: var(--color-gold);">Connect Four</td>
+              <td style="padding: 1rem;">7 × 6 (42)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>13</sup> (4.5 × 10<sup>12</sup>)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>21</sup></td>
+              <td style="padding: 1rem; color: var(--color-success);">✅ Solved (1988)</td>
+              <td style="padding: 1rem;">Player 1 Wins</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle); background: rgba(255, 42, 133, 0.05);">
+              <td style="padding: 1rem; font-weight: 700; color: var(--color-o);">Ultimate Tic-Tac-Toe</td>
+              <td style="padding: 1rem;">9 × 9 (81)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>27</sup></td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>40</sup></td>
+              <td style="padding: 1rem; color: var(--color-danger);">❌ Unsolved</td>
+              <td style="padding: 1rem;">Likely Draw / P1 Edge</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <td style="padding: 1rem; font-weight: 700; color: #a855f7;">Checkers (8x8)</td>
+              <td style="padding: 1rem;">8 × 8 (32 active)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>20</sup> (5 × 10<sup>20</sup>)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>31</sup></td>
+              <td style="padding: 1rem; color: var(--color-success);">✅ Solved (2007)</td>
+              <td style="padding: 1rem;">Forced Draw</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; font-weight: 700; color: #f8fafc;">Chess</td>
+              <td style="padding: 1rem;">8 × 8 (64)</td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>46</sup></td>
+              <td style="padding: 1rem; font-family: var(--font-mono);">10<sup>123</sup> (Shannon #)</td>
+              <td style="padding: 1rem; color: var(--color-danger);">❌ Unsolved</td>
+              <td style="padding: 1rem;">Draw / Undetermined</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Feature Comparison Cards -->
+      <div class="grid-2">
+        <div class="glass-card">
+          <div class="section-tag">🔵 Tic-Tac-Toe vs Connect 4</div>
+          <h3>Key Differences & Mechanics</h3>
+          <p>While both games involve building an aligned sequence of pieces, <strong>Connect Four adds gravity</strong>. You can only play in the lowest available slot of each column, which creates vertical columns of support and tactical "zugzwang" (forcing the opponent to play beneath you).</p>
+          <p style="font-size: 0.9rem;">Connect Four was proven by James D. Allen in 1988 to be a <strong>forced win for the first player</strong> if they start in the middle column.</p>
+        </div>
+
+        <div class="glass-card">
+          <div class="section-tag pink">🤖 AI Difficulties Compared</div>
+          <h3>Engine Implementation Hierarchy</h3>
+          <ul style="list-style: none; padding-left: 0; font-size: 0.9rem;">
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Easy AI:</strong> Chooses 80% random open cells. Ideal for small children and learning.</li>
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Medium AI:</strong> Blocks immediate 2-in-a-row threats, but fails to anticipate double-forks.</li>
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Hard AI:</strong> Uses heuristic evaluations and center/corner priorities with a 15% noise rate.</li>
+            <li style="margin-bottom: 0.8rem;">🔹 <strong>Unbeatable AI:</strong> Exhaustive Minimax tree with Alpha-Beta pruning. Mathematically impossible to defeat.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="play.html#ai" class="btn btn-primary btn-lg">Challenge the Unbeatable AI Bot Now &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Contact — Tic-Tac-Toe Pro Portal</title>
+  <meta name="description" content="Learn about the Tic-Tac-Toe Pro Portal, technology stack, mission, and get in touch with our team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-header">
+        <div class="section-tag">🌟 Mission & Tech</div>
+        <h1>About Tic-Tac-Toe Pro</h1>
+        <p>Building the world's most comprehensive, responsive, and mathematically rigorous portal for the timeless game of Tic-Tac-Toe.</p>
+      </div>
+
+      <!-- About The Project Card -->
+      <div class="glass-card" style="margin-bottom: 2.5rem;">
+        <h3>🎯 Our Mission</h3>
+        <p>Tic-Tac-Toe is often considered a simple children's game, but beneath its surface lies a rich tapestry of combinatorics, discrete mathematics, game theory, and computing history. Our goal is to provide a unified platform that serves beginners learning the rules, students studying algorithmic minimax trees, educators designing classroom activities, and competitors testing their skills across high-dimensional variants.</p>
+      </div>
+
+      <!-- Tech Stack Details -->
+      <div class="glass-card" style="margin-bottom: 3.5rem;">
+        <div class="section-tag pink">⚡ Engineering Philosophy</div>
+        <h2>Pure Vanilla Web Architecture</h2>
+        <p>This portal was crafted with <strong>zero external bulky dependencies</strong> for maximum performance, instantaneous load times, and universal browser compatibility:</p>
+
+        <div class="grid-2" style="margin-top: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md);">
+            <div style="font-weight: 700; color: var(--color-x); margin-bottom: 0.5rem;">🌐 Modern HTML5 & CSS3</div>
+            <p style="font-size: 0.85rem; margin: 0;">Glassmorphic neo-tactile UI, responsive CSS Grid and Flexbox layouts, dynamic dark mode gradients, and Google typography.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md);">
+            <div style="font-weight: 700; color: var(--color-o); margin-bottom: 0.5rem;">⚡ ES6+ JavaScript Engines</div>
+            <p style="font-size: 0.85rem; margin: 0;">Custom recursive Minimax AI with Alpha-Beta pruning, Monte Carlo statistical simulators, and Ultimate 9-grid macro state managers.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md);">
+            <div style="font-weight: 700; color: var(--color-gold); margin-bottom: 0.5rem;">🔊 Web Audio API Synthesis</div>
+            <p style="font-size: 0.85rem; margin: 0;">Zero-latency hardware-synthesized acoustic feedback without relying on external MP3/WAV audio assets.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md);">
+            <div style="font-weight: 700; color: #10b981; margin-bottom: 0.5rem;">🎉 Canvas Confetti Physics</div>
+            <p style="font-size: 0.85rem; margin: 0;">Custom 60fps particle physics engine rendering celebratory victory bursts directly to a hardware-accelerated canvas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="tool-box" id="contact">
+        <div class="tool-header">
+          <div>
+            <div class="section-tag">📬 Get In Touch</div>
+            <h2>Send Feedback or Inquiries</h2>
+            <p>Have a suggestion for a new game variant, feature request, or educational question? Drop us a line below.</p>
+          </div>
+        </div>
+
+        <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 0.4rem;">Your Name:</label>
+            <input type="text" id="contact-name" class="search-input" required placeholder="Jane Doe" style="margin-bottom: 0;">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 0.4rem;">Your Email:</label>
+            <input type="email" id="contact-email" class="search-input" required placeholder="jane@example.com" style="margin-bottom: 0;">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 0.4rem;">Message:</label>
+            <textarea id="contact-message" class="search-input" rows="4" required placeholder="Your thoughts, questions or feedback..." style="margin-bottom: 0; resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="align-self: flex-start;">🚀 Send Message</button>
+        </form>
+
+        <div id="contact-feedback" style="display: none; margin-top: 1.5rem; padding: 1rem 1.5rem; border-radius: var(--radius-md); background: rgba(16, 185, 129, 0.15); border: 1px solid var(--color-success); color: #fff;">
+          ✅ Thank you for your message! Our team has received your submission.
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      const feedback = document.getElementById('contact-feedback');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        feedback.style.display = 'block';
+        form.reset();
+        if (window.soundManager) window.soundManager.playWin();
+        if (window.confetti) window.confetti.burst();
+      });
+    });
+  </script>
+</body>
+</html>

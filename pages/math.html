@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math, Combinatorics & Game Theory — Tic-Tac-Toe Pro</title>
+  <meta name="description" content="Explore the deep mathematics of Tic-Tac-Toe: 255,168 complete game trees, 765 symmetry classes, Minimax algorithm, zero-sum game theory proofs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link active">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">📐 Discrete Math & Combinatorics</div>
+        <h1>Game Theory & Mathematical Analysis</h1>
+        <p>A deep dive into the state spaces, decision trees, rotational symmetries, and proofs that govern Tic-Tac-Toe.</p>
+      </div>
+
+      <!-- Hero Statistics Matrix -->
+      <div class="grid-4" style="margin-bottom: 3.5rem;">
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--color-x);">255,168</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Total Playable Game Trees</div>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: #a855f7;">5,478</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Legal Reachable States</div>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--color-gold);">765</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Unique Symmetry Classes</div>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--color-o);">138</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Terminal Symmetry Boards</div>
+        </div>
+      </div>
+
+      <!-- 255,168 Breakdown -->
+      <div class="glass-card" style="margin-bottom: 3rem;">
+        <div class="section-tag pink">📊 Exhaustive Tree Breakdown</div>
+        <h2>The 255,168 Total Game Permutations</h2>
+        <p>When considering all move orders without accounting for symmetry, there are exactly <strong>255,168 unique finished game outcomes</strong>:</p>
+
+        <div style="margin: 2rem 0;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-family: var(--font-mono); font-size: 0.95rem;">
+            <span style="color: var(--color-x);">X Wins: 131,184 (51.4%)</span>
+            <span style="color: var(--text-muted);">Draws: 46,080 (18.1%)</span>
+            <span style="color: var(--color-o);">O Wins: 77,904 (30.5%)</span>
+          </div>
+          <div class="prob-meter">
+            <div class="prob-bar-x" style="width: 51.4%;"></div>
+            <div class="prob-bar-draw" style="width: 18.1%;"></div>
+            <div class="prob-bar-o" style="width: 30.5%;"></div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.95rem; color: var(--text-secondary);">
+          Notice the clear first-mover advantage for <strong>Player X</strong>: under completely random play, Player 1 wins over 51% of the time, Player 2 wins 30.5%, and only 18% end in draws. However, with rational agents (Minimax), the draw rate becomes <strong>100%</strong>.
+        </p>
+      </div>
+
+      <!-- Symmetry Classes & Group Theory -->
+      <div class="grid-2" style="margin-bottom: 3rem;">
+        <div class="glass-card">
+          <div class="section-tag">🔄 Group Theory</div>
+          <h3>The Dihedral Group (D4) Symmetries</h3>
+          <p>A 3×3 grid possesses <strong>8 geometric symmetries</strong> under the Dihedral Group <em>D4</em>:</p>
+          <ul style="list-style: none; padding-left: 0; font-size: 0.9rem;">
+            <li style="margin-bottom: 0.5rem;">🔹 4 Rotational states (0°, 90°, 180°, 270°)</li>
+            <li style="margin-bottom: 0.5rem;">🔹 4 Reflections (horizontal, vertical, diagonal, anti-diagonal)</li>
+          </ul>
+          <p style="font-size: 0.9rem; margin-top: 1rem;">While there are 3<sup>9</sup> = 19,683 possible cell states, filtering for legal move counts reduces it to 5,478. Applying <em>D4</em> symmetry reduction collapses all possible game situations down to just <strong>765 distinct strategic boards</strong>.</p>
+        </div>
+
+        <div class="glass-card">
+          <div class="section-tag pink">🤖 Minimax Algorithm</div>
+          <h3>Why Perfect Play Always Draws</h3>
+          <p>In Game Theory, Tic-Tac-Toe is classified as a <strong>finite, sequential, deterministic, zero-sum game with perfect information</strong>.</p>
+          <p style="font-size: 0.9rem;">By <strong>Zermelo's Theorem (1913)</strong>, every such game has a determined game-theoretic value: either Player 1 has a winning strategy, Player 2 has a winning strategy, or both players can force at least a draw.</p>
+          <p style="font-size: 0.9rem;">The Minimax value of the starting board is mathematically <strong>0 (Draw)</strong>. Neither player can ever force a victory against a rational opponent.</p>
+        </div>
+      </div>
+
+      <!-- Minimax Mathematical Formula -->
+      <div class="glass-card">
+        <div class="section-tag">⚡ Minimax Mathematical Formulation</div>
+        <h3>The Minimax Evaluation Function</h3>
+        <p>The Minimax value <code>V(s)</code> of any board state <code>s</code> is computed recursively:</p>
+        
+        <div style="background: var(--bg-primary); padding: 1.5rem; border-radius: var(--radius-md); font-family: var(--font-mono); color: var(--color-x); margin: 1.25rem 0; border: 1px solid var(--border-subtle); font-size: 1.05rem;">
+          V(s) = <br>
+          &nbsp;&nbsp;+10 - depth, &nbsp;&nbsp;if s is a terminal WIN for Maximizer (AI)<br>
+          &nbsp;&nbsp;depth - 10, &nbsp;&nbsp;if s is a terminal WIN for Minimizer (Opponent)<br>
+          &nbsp;&nbsp;0, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if s is a terminal DRAW<br>
+          &nbsp;&nbsp;max<sub>a</sub> V(result(s, a)), &nbsp;if turn is Maximizer<br>
+          &nbsp;&nbsp;min<sub>a</sub> V(result(s, a)), &nbsp;if turn is Minimizer
+        </div>
+
+        <p style="font-size: 0.95rem;">By appending <strong>Alpha-Beta Pruning</strong>, branches that cannot possibly influence the final decision are discarded early, reducing computation time by over 80% without losing optimal precision.</p>
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="tools.html" class="btn btn-primary btn-lg">🔬 Experiment with Probability & Minimax Tools &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

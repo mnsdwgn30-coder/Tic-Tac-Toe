@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe Strategy Guide — How to Never Lose</title>
+  <meta name="description" content="Master Tic-Tac-Toe strategy: Best opening moves, corner vs center theory, forking setups, defensive blocking, and beating AI algorithms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link active">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="history.html" class="nav-link">History</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">🧠 Tactical Masterclass</div>
+        <h1>How To Never Lose At Tic-Tac-Toe</h1>
+        <p>A rigorous, step-by-step masterclass in opening moves, forking matrices, defensive priority trees, and game-theoretic dominance.</p>
+      </div>
+
+      <!-- Strategy Rule #1: The Unbeatable Formula -->
+      <div class="glass-card" style="margin-bottom: 2.5rem;">
+        <div class="section-tag pink">⚡ The Golden Move Hierarchy</div>
+        <h2>The 5-Step Priority Checklist</h2>
+        <p>On every single turn, evaluate these 5 conditions in strict numerical order. If you follow this algorithm, you can mathematically <strong>never lose a game</strong>:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-x);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-x);">1. WIN</div>
+            <p style="font-size: 0.85rem; margin: 0;">If you have two in a row, place your 3rd piece to win immediately.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-danger);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-danger);">2. BLOCK</div>
+            <p style="font-size: 0.85rem; margin: 0;">If the opponent has two in a row, play the blocking square.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-gold);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-gold);">3. FORK</div>
+            <p style="font-size: 0.85rem; margin: 0;">Create an intersection where you have 2 simultaneous winning paths.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid #a855f7;">
+            <div style="font-size: 1.25rem; font-weight: 800; color: #a855f7);">4. BLOCK FORK</div>
+            <p style="font-size: 0.85rem; margin: 0;">Prevent the opponent from building a double-threat fork.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-o);">
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-o);">5. CENTER / CORNER</div>
+            <p style="font-size: 0.85rem; margin: 0;">Occupy the center if open; otherwise claim an opposite corner.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Openings: Corner vs Center vs Edge -->
+      <div class="section-header" style="margin-top: 4rem;">
+        <div class="section-tag">📊 Opening Move Analysis</div>
+        <h2>Corner vs Center vs Edge Openings</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass-card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">👑</div>
+          <h3>1. Corner Opening (Best)</h3>
+          <p><strong>Recommendation: 10/10</strong></p>
+          <p>Playing in any of the 4 corners gives you 3 potential winning lines (1 row, 1 col, 1 diagonal). Most importantly, if your opponent does NOT immediately play the exact center square, <strong>you have a forced 100% guaranteed win</strong> by building an unavoidable corner fork.</p>
+        </div>
+
+        <div class="glass-card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+          <h3>2. Center Opening (Safest)</h3>
+          <p><strong>Recommendation: 8.5/10</strong></p>
+          <p>The center square is part of 4 winning lines (1 row, 1 col, 2 diagonals). It exerts massive board control. However, if your opponent responds by playing any corner square, they easily force a draw with standard defense.</p>
+        </div>
+
+        <div class="glass-card">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+          <h3>3. Edge Opening (Weakest)</h3>
+          <p><strong>Recommendation: 3/10</strong></p>
+          <p>Playing on an edge (top, bottom, left, right middle) is part of only 2 winning lines. It gives the second player immediate initiative to take the center and control the tempo.</p>
+        </div>
+      </div>
+
+      <!-- Forking Masterclass Diagram -->
+      <div class="glass-card" style="margin-top: 3.5rem;">
+        <div class="section-tag pink">⚔️ Advanced Tactic</div>
+        <h2>The Unstoppable "Corner Fork" Setup</h2>
+        <p>Here is the exact sequence that tournament players use to guarantee victory as Player 1 (X):</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; align-items: center;">
+          <div>
+            <ol style="padding-left: 1.25rem;">
+              <li style="margin-bottom: 1rem;"><strong>Move 1 (X):</strong> Play in any corner (e.g. Top-Left).</li>
+              <li style="margin-bottom: 1rem;"><strong>Move 2 (O):</strong> Opponent makes a mistake and plays an edge or another corner (not center).</li>
+              <li style="margin-bottom: 1rem;"><strong>Move 3 (X):</strong> Play in a second corner on the same row or column.</li>
+              <li style="margin-bottom: 1rem;"><strong>Move 4 (O):</strong> Opponent is forced to block your 2-in-a-row.</li>
+              <li style="margin-bottom: 1rem;"><strong>Move 5 (X):</strong> Take the 3rd corner! You now have TWO winning lines ready simultaneously. Player O can only block one, and you win on turn 7!</li>
+            </ol>
+          </div>
+          <div style="background: var(--bg-primary); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--color-gold); margin-bottom: 1rem;">Visual Fork Grid:</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 60px); gap: 6px; justify-content: center;">
+              <div style="width: 60px; height: 60px; background: rgba(0,242,254,0.2); border: 1px solid var(--color-x); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--color-x);">X</div>
+              <div style="width: 60px; height: 60px; background: rgba(255,42,133,0.15); border: 1px solid var(--color-o); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--color-o);">O</div>
+              <div style="width: 60px; height: 60px; background: rgba(0,242,254,0.2); border: 1px solid var(--color-x); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--color-x);">X</div>
+              
+              <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: 8px;"></div>
+              <div style="width: 60px; height: 60px; background: rgba(255,42,133,0.15); border: 1px solid var(--color-o); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--color-o);">O</div>
+              <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: 8px;"></div>
+
+              <div style="width: 60px; height: 60px; background: rgba(0,242,254,0.2); border: 1px solid var(--color-x); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--color-x);">X</div>
+              <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: 8px;"></div>
+              <div style="width: 60px; height: 60px; background: rgba(251,191,36,0.2); border: 2px dashed var(--color-gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--color-gold);">DOUBLE THREAT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="tools.html" class="btn btn-secondary btn-lg">🔬 Test Strategies in Move Simulator &rarr;</a>
+        <a href="math.html" class="btn btn-primary btn-lg">📐 See Game Theory & 255k Outcomes &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

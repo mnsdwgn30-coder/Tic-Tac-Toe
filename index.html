@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #202124;
+      color: #e8eaed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    /* Google Style Centered Game Card */
+    .game-card {
+      background: #303134;
+      border-radius: 20px;
+      padding: 24px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Game Title Header */
+    .game-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title-x { color: #5bb974; }
+    .title-o { color: #f28b82; }
+
+    /* Main Mode Switcher: 2 Players vs vs Computer */
+    .mode-bar {
+      display: flex;
+      background: #202124;
+      border-radius: 24px;
+      padding: 4px;
+      margin-bottom: 12px;
+      border: 1px solid #3c4043;
+      width: 100%;
+      gap: 4px;
+    }
+
+    .mode-btn {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 20px;
+      border: none;
+      background: transparent;
+      color: #9aa0a6;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .mode-btn.active {
+      background: #3c4043;
+      color: #8ab4f8;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Difficulty Sub-bar for Computer Mode */
+    .difficulty-bar {
+      display: flex;
+      background: rgba(32, 33, 36, 0.6);
+      border-radius: 18px;
+      padding: 3px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      width: 100%;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .difficulty-bar.hidden {
+      display: none;
+    }
+
+    .diff-btn {
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: 14px;
+      border: none;
+      background: transparent;
+      color: #9aa0a6;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .diff-btn:hover:not(.active) {
+      color: #e8eaed;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .diff-btn.active {
+      background: #444746;
+      color: #8ab4f8;
+    }
+
+    /* Active Player Indicator Cards with Editable Name Input */
+    .players-bar {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .player-card {
+      flex: 1;
+      background: #202124;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .player-card.x-card { color: #5bb974; }
+    .player-card.o-card { color: #f28b82; }
+
+    .player-card.active {
+      background: #3c4043;
+      border-color: currentColor;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+      transform: scale(1.02);
+    }
+
+    .name-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .player-name-input {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: inherit;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 2px 4px;
+      width: 100%;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .player-name-input:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .player-name-input:focus {
+      border-color: currentColor;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .player-name-input:disabled {
+      cursor: default;
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .edit-icon {
+      font-size: 11px;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .player-symbol {
+      font-size: 20px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* Turn / Status Banner */
+    .status-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #e8eaed;
+      margin-bottom: 18px;
+      min-height: 24px;
+      text-align: center;
+    }
+
+    .status-text .turn-highlight {
+      font-weight: 700;
+    }
+
+    .status-text .x-text { color: #5bb974; }
+    .status-text .o-text { color: #f28b82; }
+
+    /* 3x3 Game Board */
+    .board-container {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      margin-bottom: 24px;
+    }
+
+    .cell {
+      background: transparent;
+      border: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 58px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    /* Google style clean grid lines */
+    .cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3),
+    .cell:nth-child(4), .cell:nth-child(5), .cell:nth-child(6) {
+      border-bottom: 4px solid #5f6368;
+    }
+
+    .cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7),
+    .cell:nth-child(2), .cell:nth-child(5), .cell:nth-child(8) {
+      border-right: 4px solid #5f6368;
+    }
+
+    .cell:hover:not(.filled) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cell.x-mark { color: #5bb974; }
+    .cell.o-mark { color: #f28b82; }
+
+    .cell.winning {
+      background: rgba(138, 180, 248, 0.15);
+      animation: pulse-win 0.8s infinite alternate;
+    }
+
+    @keyframes pulse-win {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    /* Scoreboard */
+    .scoreboard {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #3c4043;
+      padding-top: 16px;
+    }
+
+    .score-item {
+      text-align: center;
+    }
+
+    .score-label {
+      font-size: 12px;
+      color: #9aa0a6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .score-val {
+      font-size: 22px;
+      font-weight: 700;
+      color: #e8eaed;
+    }
+
+    /* Action Buttons Row */
+    .actions-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-action {
+      background: transparent;
+      border: 1px solid #5f6368;
+      color: #8ab4f8;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #3c4043;
+      border-color: #8ab4f8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Style Game Card -->
+  <main class="game-card">
+    
+    <!-- Game Title at the Top -->
+    <h1 class="game-title">
+      <span class="title-x">✕</span>
+      <span>Tic-Tac-Toe</span>
+      <span class="title-o">◯</span>
+    </h1>
+
+    <!-- Top Mode Switcher: 2 Players vs vs Computer -->
+    <div class="mode-bar">
+      <button class="mode-btn active" id="btn-mode-2p">👥 2 Players</button>
+      <button class="mode-btn" id="btn-mode-ai">🤖 vs Computer</button>
+    </div>
+
+    <!-- Sub Difficulty Bar for Computer (Easy, Normal, Hard) -->
+    <div class="difficulty-bar hidden" id="difficulty-bar">
+      <button class="diff-btn" data-diff="easy" id="btn-easy">🟢 Easy</button>
+      <button class="diff-btn" data-diff="normal" id="btn-normal">🟡 Normal</button>
+      <button class="diff-btn active" data-diff="hard" id="btn-hard">🔴 Hard (Minimax)</button>
+    </div>
+
+    <!-- Active Player Indicator Cards with Name Customization -->
+    <div class="players-bar">
+      <div class="player-card x-card active" id="card-p1" title="Click name to edit">
+        <div class="name-input-wrapper">
+          <input type="text" class="player-name-input" id="input-p1" value="Player 1" maxlength="15" placeholder="Player 1">
+          <span class="edit-icon">✏️</span>
+        </div>
+        <div class="player-symbol">✕</div>
+      </div>
+      <div class="player-card o-card" id="card-p2" title="Click name to edit">
+        <div class="name-input-wrapper">
+          <input type="text" class="player-name-input" id="input-p2" value="Player 2" maxlength="15" placeholder="Player 2">
+          <span class="edit-icon" id="edit-icon-p2">✏️</span>
+        </div>
+        <div class="player-symbol">◯</div>
+      </div>
+    </div>
+
+    <!-- Turn Message -->
+    <div class="status-text" id="game-status">
+      Turn: <span class="turn-highlight x-text">Player 1 (✕)</span>
+    </div>
+
+    <!-- 3x3 Grid Board -->
+    <div class="board-container" id="board">
+      <button class="cell" data-index="0" aria-label="Cell 1"></button>
+      <button class="cell" data-index="1" aria-label="Cell 2"></button>
+      <button class="cell" data-index="2" aria-label="Cell 3"></button>
+      <button class="cell" data-index="3" aria-label="Cell 4"></button>
+      <button class="cell" data-index="4" aria-label="Cell 5"></button>
+      <button class="cell" data-index="5" aria-label="Cell 6"></button>
+      <button class="cell" data-index="6" aria-label="Cell 7"></button>
+      <button class="cell" data-index="7" aria-label="Cell 8"></button>
+      <button class="cell" data-index="8" aria-label="Cell 9"></button>
+    </div>
+
+    <!-- Scoreboard: Player 1 | Ties | Player 2 / Computer -->
+    <div class="scoreboard">
+      <div class="score-item">
+        <div class="score-label" id="score-label-p1">PLAYER 1 (✕)</div>
+        <div class="score-val" id="score-p1">0</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label">TIES</div>
+        <div class="score-val" id="score-ties">0</div>
+      </div>
+      <div class="score-item">
+        <div class="score-label" id="score-label-p2">PLAYER 2 (◯)</div>
+        <div class="score-val" id="score-p2">0</div>
+      </div>
+    </div>
+
+    <!-- Controls: Restart & Sound -->
+    <div class="actions-row">
+      <button class="btn-action" id="btn-restart">
+        <span>🔄</span> Restart
+      </button>
+      <button class="btn-action" id="btn-sound">
+        <span>🔊</span> Sound
+      </button>
+    </div>
+  </main>
+
+  <script>
+    // --- Synthesized Sound FX ---
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.muted = false;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+      }
+      play(freq, type = 'sine', duration = 0.12, gainVal = 0.2) {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch(e){}
+      }
+      playX() { this.play(500, 'triangle', 0.1, 0.25); }
+      playO() { this.play(350, 'sine', 0.12, 0.28); }
+      playWin() {
+        [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+          setTimeout(() => this.play(f, 'sine', 0.22, 0.25), i * 90);
+        });
+      }
+      playDraw() {
+        [350, 310].forEach((f, i) => {
+          setTimeout(() => this.play(f, 'sawtooth', 0.15, 0.15), i * 100);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    // Winning combos
+    const WINNING_COMBOS = [
+      [0,1,2], [3,4,5], [6,7,8],
+      [0,3,6], [1,4,7], [2,5,8],
+      [0,4,8], [2,4,6]
+    ];
+
+    // Game state
+    let is2PlayerMode = true;
+    let aiDifficulty = 'hard'; // 'easy', 'normal', 'hard'
+    let board = Array(9).fill(null);
+    let currentTurn = 'X'; // 'X' or 'O'
+    let isGameOver = false;
+    let isAiThinking = false;
+
+    let scores = { p1: 0, ties: 0, p2: 0 };
+
+    // DOM Elements
+    const cells = document.querySelectorAll('.cell');
+    const statusText = document.getElementById('game-status');
+    const cardP1 = document.getElementById('card-p1');
+    const cardP2 = document.getElementById('card-p2');
+    const inputP1 = document.getElementById('input-p1');
+    const inputP2 = document.getElementById('input-p2');
+    const editIconP2 = document.getElementById('edit-icon-p2');
+    const labelP1 = document.getElementById('score-label-p1');
+    const labelP2 = document.getElementById('score-label-p2');
+    const scoreP1El = document.getElementById('score-p1');
+    const scoreTiesEl = document.getElementById('score-ties');
+    const scoreP2El = document.getElementById('score-p2');
+    const btnMode2P = document.getElementById('btn-mode-2p');
+    const btnModeAi = document.getElementById('btn-mode-ai');
+    const difficultyBar = document.getElementById('difficulty-bar');
+    const diffButtons = document.querySelectorAll('.diff-btn');
+    const btnRestart = document.getElementById('btn-restart');
+    const btnSound = document.getElementById('btn-sound');
+
+    function getPlayer1Name() {
+      return (inputP1.value.trim() || 'Player 1');
+    }
+
+    function getPlayer2Name() {
+      if (!is2PlayerMode) {
+        if (aiDifficulty === 'easy') return 'Computer: Easy';
+        if (aiDifficulty === 'normal') return 'Computer: Normal';
+        return 'Computer: Hard';
+      }
+      return (inputP2.value.trim() || 'Player 2');
+    }
+
+    function updateModeUI() {
+      if (is2PlayerMode) {
+        btnMode2P.classList.add('active');
+        btnModeAi.classList.remove('active');
+        difficultyBar.classList.add('hidden');
+        inputP2.disabled = false;
+        editIconP2.style.display = 'inline';
+        if (inputP2.value.startsWith('Computer')) {
+          inputP2.value = 'Player 2';
+        }
+      } else {
+        btnModeAi.classList.add('active');
+        btnMode2P.classList.remove('active');
+        difficultyBar.classList.remove('hidden');
+        inputP2.disabled = true;
+        editIconP2.style.display = 'none';
+        inputP2.value = getPlayer2Name();
+      }
+
+      labelP1.textContent = `${getPlayer1Name().toUpperCase()} (✕)`;
+      labelP2.textContent = `${getPlayer2Name().toUpperCase()} (◯)`;
+
+      diffButtons.forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-diff') === aiDifficulty);
+      });
+    }
+
+    function resetGame() {
+      board = Array(9).fill(null);
+      isGameOver = false;
+      isAiThinking = false;
+      currentTurn = 'X';
+
+      cells.forEach(c => {
+        c.textContent = '';
+        c.className = 'cell';
+      });
+
+      updateStatus();
+    }
+
+    function updateStatus() {
+      if (isGameOver) return;
+
+      const p1 = getPlayer1Name();
+      const p2 = getPlayer2Name();
+
+      labelP1.textContent = `${p1.toUpperCase()} (✕)`;
+      labelP2.textContent = `${p2.toUpperCase()} (◯)`;
+
+      if (!is2PlayerMode && currentTurn === 'O' && isAiThinking) {
+        statusText.innerHTML = `${p2} is thinking... 🤖`;
+        cardP2.classList.add('active');
+        cardP1.classList.remove('active');
+        return;
+      }
+
+      if (currentTurn === 'X') {
+        cardP1.classList.add('active');
+        cardP2.classList.remove('active');
+        statusText.innerHTML = `Turn: <span class="turn-highlight x-text">${p1} (✕)</span>`;
+      } else {
+        cardP2.classList.add('active');
+        cardP1.classList.remove('active');
+        statusText.innerHTML = `Turn: <span class="turn-highlight o-text">${p2} (◯)</span>`;
+      }
+    }
+
+    function checkWinner(b) {
+      for (let combo of WINNING_COMBOS) {
+        const [a, b1, c] = combo;
+        if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
+          return { winner: b[a], combo };
+        }
+      }
+      if (b.every(cell => cell !== null)) {
+        return { winner: 'tie' };
+      }
+      return null;
+    }
+
+    function handleCellClick(index) {
+      if (isGameOver || board[index] !== null || isAiThinking) return;
+
+      makeMove(index, currentTurn);
+
+      // If playing vs Computer and it's Computer's turn
+      if (!isGameOver && !is2PlayerMode && currentTurn === 'O') {
+        triggerAiMove();
+      }
+    }
+
+    function makeMove(index, player) {
+      board[index] = player;
+      const cell = cells[index];
+      cell.textContent = player === 'X' ? '✕' : '◯';
+      cell.classList.add('filled', player === 'X' ? 'x-mark' : 'o-mark');
+
+      if (player === 'X') sound.playX();
+      else sound.playO();
+
+      const result = checkWinner(board);
+
+      if (result) {
+        isGameOver = true;
+        if (result.winner === 'tie') {
+          scores.ties++;
+          scoreTiesEl.textContent = scores.ties;
+          statusText.innerHTML = `Game ended in a <span class="turn-highlight">Draw!</span>`;
+          sound.playDraw();
+        } else {
+          if (result.winner === 'X') {
+            scores.p1++;
+            scoreP1El.textContent = scores.p1;
+          } else {
+            scores.p2++;
+            scoreP2El.textContent = scores.p2;
+          }
+
+          result.combo.forEach(i => cells[i].classList.add('winning'));
+
+          let winnerName = result.winner === 'X' ? `${getPlayer1Name()} (✕)` : `${getPlayer2Name()} (◯)`;
+          const markClass = result.winner === 'X' ? 'x-text' : 'o-text';
+          statusText.innerHTML = `🎉 <span class="turn-highlight ${markClass}">${winnerName}</span> Wins!`;
+          sound.playWin();
+        }
+        cardP1.classList.remove('active');
+        cardP2.classList.remove('active');
+      } else {
+        currentTurn = currentTurn === 'X' ? 'O' : 'X';
+        updateStatus();
+      }
+    }
+
+    // --- Computer AI Engine ---
+    function triggerAiMove() {
+      isAiThinking = true;
+      updateStatus();
+
+      const thinkDelay = aiDifficulty === 'hard' ? 250 : 350;
+
+      setTimeout(() => {
+        if (isGameOver) return;
+        const move = getAiMove();
+        isAiThinking = false;
+        if (move !== -1 && move !== undefined) {
+          makeMove(move, 'O');
+        }
+      }, thinkDelay);
+    }
+
+    function getAiMove() {
+      const avail = board.map((v, i) => (v === null ? i : null)).filter(v => v !== null);
+      if (avail.length === 0) return -1;
+
+      // 1. EASY MODE (75% Random)
+      if (aiDifficulty === 'easy') {
+        if (Math.random() < 0.75) {
+          return avail[Math.floor(Math.random() * avail.length)];
+        }
+      }
+
+      // 2. NORMAL MODE (35% Random + Smart Blocking/Winning)
+      if (aiDifficulty === 'normal') {
+        if (Math.random() < 0.35) {
+          return avail[Math.floor(Math.random() * avail.length)];
+        }
+
+        // Can Computer win now?
+        for (let i of avail) {
+          board[i] = 'O';
+          if (checkWinner(board)?.winner === 'O') {
+            board[i] = null;
+            return i;
+          }
+          board[i] = null;
+        }
+
+        // Block human win
+        for (let i of avail) {
+          board[i] = 'X';
+          if (checkWinner(board)?.winner === 'X') {
+            board[i] = null;
+            return i;
+          }
+          board[i] = null;
+        }
+
+        // Center preference
+        if (avail.includes(4)) return 4;
+
+        return avail[Math.floor(Math.random() * avail.length)];
+      }
+
+      // 3. HARD MODE (Unbeatable Minimax AI)
+      let bestScore = -Infinity;
+      let bestMove = avail[0];
+
+      for (let i of avail) {
+        board[i] = 'O';
+        let score = minimax(board, 0, false, -Infinity, Infinity);
+        board[i] = null;
+        if (score > bestScore) {
+          bestScore = score;
+          bestMove = i;
+        }
+      }
+      return bestMove;
+    }
+
+    function minimax(currBoard, depth, isMaximizing, alpha, beta) {
+      const res = checkWinner(currBoard);
+      if (res) {
+        if (res.winner === 'O') return 10 - depth;
+        if (res.winner === 'X') return depth - 10;
+        if (res.winner === 'tie') return 0;
+      }
+
+      const avail = currBoard.map((v, i) => (v === null ? i : null)).filter(v => v !== null);
+
+      if (isMaximizing) {
+        let maxEval = -Infinity;
+        for (let idx of avail) {
+          currBoard[idx] = 'O';
+          let evalScore = minimax(currBoard, depth + 1, false, alpha, beta);
+          currBoard[idx] = null;
+          maxEval = Math.max(maxEval, evalScore);
+          alpha = Math.max(alpha, evalScore);
+          if (beta <= alpha) break;
+        }
+        return maxEval;
+      } else {
+        let minEval = Infinity;
+        for (let idx of avail) {
+          currBoard[idx] = 'X';
+          let evalScore = minimax(currBoard, depth + 1, true, alpha, beta);
+          currBoard[idx] = null;
+          minEval = Math.min(minEval, evalScore);
+          beta = Math.min(beta, evalScore);
+          if (beta <= alpha) break;
+        }
+        return minEval;
+      }
+    }
+
+    // Event Listeners
+    cells.forEach(c => {
+      c.addEventListener('click', () => {
+        const idx = parseInt(c.getAttribute('data-index'));
+        handleCellClick(idx);
+      });
+    });
+
+    // Editable name inputs listeners
+    inputP1.addEventListener('input', () => {
+      updateStatus();
+    });
+
+    inputP2.addEventListener('input', () => {
+      updateStatus();
+    });
+
+    btnMode2P.addEventListener('click', () => {
+      if (is2PlayerMode) return;
+      is2PlayerMode = true;
+      updateModeUI();
+      scores = { p1: 0, ties: 0, p2: 0 };
+      scoreP1El.textContent = '0';
+      scoreTiesEl.textContent = '0';
+      scoreP2El.textContent = '0';
+      resetGame();
+    });
+
+    btnModeAi.addEventListener('click', () => {
+      if (!is2PlayerMode) return;
+      is2PlayerMode = false;
+      updateModeUI();
+      scores = { p1: 0, ties: 0, p2: 0 };
+      scoreP1El.textContent = '0';
+      scoreTiesEl.textContent = '0';
+      scoreP2El.textContent = '0';
+      resetGame();
+    });
+
+    diffButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        aiDifficulty = btn.getAttribute('data-diff');
+        updateModeUI();
+        scores = { p1: 0, ties: 0, p2: 0 };
+        scoreP1El.textContent = '0';
+        scoreTiesEl.textContent = '0';
+        scoreP2El.textContent = '0';
+        resetGame();
+      });
+    });
+
+    btnRestart.addEventListener('click', () => {
+      resetGame();
+    });
+
+    btnSound.addEventListener('click', () => {
+      sound.muted = !sound.muted;
+      btnSound.innerHTML = sound.muted ? '<span>🔇</span> Muted' : '<span>🔊</span> Sound';
+    });
+
+    // Initialize
+    updateModeUI();
+    resetGame();
+  </script>
+</body>
+</html>

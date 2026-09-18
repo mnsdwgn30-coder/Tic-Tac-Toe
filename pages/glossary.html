@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe Glossary — Strategy, Math & Gameplay Terms</title>
+  <meta name="description" content="A searchable glossary of Tic-Tac-Toe terms: Fork, Block, Minimax, Alpha-Beta, Optimal Play, Symmetries, Dihedral D4, and Misère.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-icon">⚔️</div>
+        <span>TIC-TAC-TOE<span class="gradient-x">.PRO</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="play.html" class="nav-link">Play Arena</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+          <li><a href="strategy.html" class="nav-link">Strategy</a></li>
+          <li><a href="math.html" class="nav-link">Math & Theory</a></li>
+          <li><a href="variants.html" class="nav-link">Variants</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="glossary.html" class="nav-link active">Glossary</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="audio-toggle-btn" aria-label="Toggle Sound" title="Toggle Sound">🔊</button>
+        <a href="play.html" class="btn btn-primary btn-sm">⚡ Play Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">📖 Terminology Index</div>
+        <h1>Glossary of Terms</h1>
+        <p>Definitions and tactical breakdowns for essential game concepts, mathematical terms, and algorithmic heuristics.</p>
+      </div>
+
+      <!-- Search Input -->
+      <div style="max-width: 600px; margin: 0 auto 2.5rem;">
+        <input type="text" id="glossary-search" class="search-input" placeholder="🔍 Search terms (e.g. Fork, Minimax, Symmetries)...">
+      </div>
+
+      <!-- Glossary Terms Grid -->
+      <div class="grid-3" id="glossary-container">
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag">Tactics</div>
+          <h3>Fork</h3>
+          <p>A tactical move that creates <strong>two simultaneous winning threats</strong> (two unblocked 2-in-a-rows). Because the opponent can only block one square on their next turn, a fork guarantees victory.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag pink">Defense</div>
+          <h3>Block</h3>
+          <p>Placing a mark in an empty square to stop an opponent who already has two marks aligned in a row, column, or diagonal from winning on their upcoming turn.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag">Algorithms</div>
+          <h3>Minimax</h3>
+          <p>A recursive decision-making algorithm in artificial intelligence used in two-player zero-sum games to find the optimal move assuming the opponent also plays optimally.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag pink">Algorithms</div>
+          <h3>Alpha-Beta Pruning</h3>
+          <p>An optimization technique for the Minimax algorithm that eliminates branches in the search tree that cannot influence the final decision, dramatically increasing speed.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag">Theory</div>
+          <h3>Optimal Play</h3>
+          <p>A sequence of moves where both players make the mathematically best decision at every turn. In Tic-Tac-Toe, optimal play always terminates in a Draw.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag pink">Rules</div>
+          <h3>Cat's Game (Draw / Tie)</h3>
+          <p>A finished game where all 9 squares on the board have been filled without either player successfully achieving 3 of their marks in a row.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag">Geometry</div>
+          <h3>Dihedral Group D4</h3>
+          <p>The symmetry group of a square consisting of 8 operations (4 rotations and 4 reflections). In Tic-Tac-Toe, D4 reduces 5,478 board states to 765 unique classes.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag pink">Rules</div>
+          <h3>Misère Mode</h3>
+          <p>A game variant where standard victory conditions are inverted: the first player to form a 3-in-a-row loses the game.</p>
+        </div>
+
+        <div class="glass-card glossary-card">
+          <div class="section-tag">Theory</div>
+          <h3>Zero-Sum Game</h3>
+          <p>A mathematical representation where one participant's gain or loss is exactly balanced by the losses or gains of the other participant.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tic-Tac-Toe Pro Portal.</div>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/audio.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
